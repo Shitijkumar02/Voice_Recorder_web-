@@ -1,0 +1,214 @@
+/* Updated Voice_Recorder_web.css */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
+
+body {
+  font-family: 'Bodoni MT black', sans-serif;
+  background: url('/static/background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  background: rgba(57, 224, 243, 0.9);
+  padding: 30px 50px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.wave-container {
+  margin-top: 20px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 4px;
+  visibility: hidden;
+}
+
+.wave-bar {
+  width: 6px;
+  height: 20px;
+  background: #8e76e5;
+  border-radius: 10px;
+  animation: waveAnim 1s infinite ease-in-out;
+  animation-delay: calc(0.1s * var(--i));
+}
+
+body.recording .wave-container {
+  visibility: visible;
+}
+
+@keyframes waveAnim {
+  0%, 100% { height: 20px; }
+  50% { height: 40px; }
+}
+
+h1 {
+  color: #333;
+  font-size: 32px;
+  margin-bottom: 30px;
+  animation: fadeIn 1s ease;
+}
+
+.main-title {
+  font-size: 36px;
+  color: #2c3e50;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1s ease;
+}
+
+.controls button {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  margin: 12px 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.4s ease;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+  perspective: 800px;
+}
+
+#startBtn {
+  background: linear-gradient(145deg, #8e76e5, #34089a);
+  color: #fff;
+}
+
+#pauseBtn {
+  background: linear-gradient(145deg, #9cdf26, #b53004);
+  color: #fff;
+}
+
+#stopBtn {
+  background: linear-gradient(145deg, #dc3545, #c82333);
+  color: #fff;
+}
+
+.controls button:hover {
+  transform: translateY(-3px) scale(1.04) rotateX(1deg);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.25);
+}
+
+.controls button:active {
+  transform: translateY(1px) scale(0.97);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+#status {
+  margin-top: 25px;
+  font-weight: 600;
+  font-size: 16px;
+  color: #222;
+  transition: color 0.4s ease;
+}
+
+audio {
+  margin-top: 30px;
+  width: 100%;
+  outline: none;
+  border-radius: 10px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+}
+
+audio::-webkit-media-controls-panel {
+  background-color: #84b6ef;
+  border-radius: 10px;
+  transition: background-color 0.4s ease;
+}
+
+audio:hover::-webkit-media-controls-panel {
+  background-color: #78a6f5;
+}
+
+#recordingsList {
+  margin-top: 40px;
+  text-align: center;
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 20px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #432bcb, #1adb94);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+#recordingsList:hover {
+  transform: perspective(1000px) rotateX(1deg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+#recordingsList h2 {
+  font-size: 26px;
+  color: #f4f5f1;
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+#recordingsList ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#recordingsList li {
+  margin-bottom: 18px;
+  padding: 15px;
+  border-radius: 15px;
+  background: #1b1920;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#recordingsList li:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+#recordingsList audio {
+  flex-grow: 1;
+  margin-right: 15px;
+  border-radius: 8px;
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+#recordingsList button {
+  background: linear-gradient(135deg, #ff5252, #ff1744);
+  border: none;
+  color: rgb(248, 158, 110);
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 3px 10px rgba(255, 87, 87, 0.4);
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+#recordingsList button:hover {
+  background: linear-gradient(135deg, #e60000, #b71c1c);
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-15px); }
+  to { opacity: 1; transform: translateY(0); }
+}

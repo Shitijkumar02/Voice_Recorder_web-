@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VOICE_RECORDER</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='Voice_Recorder_web.css') }}">
+  <style>
+    .main-title, h1, #status {
+      animation: fadeText 2s ease-in-out both;
+    }
+
+    @keyframes fadeText {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      transition: color 0.5s ease, transform 0.5s ease;
+    }
+
+    h1:hover {
+      color: #6a1b9a;
+      transform: scale(1.05);
+    }
+    button {
+    transition: background-color 0.4s ease, transform 0.3s ease;
+    animation: fadeText 1.2s ease-in-out both;
+  }
+
+  button:hover {
+    transform: scale(1.08);
+    filter: brightness(1.1);
+  }
+
+  </style>
+</head>
+<body style="overflow-y: auto; min-height: 100vh; margin: 0; padding: 40px 0;">
+  <div class="container" style="max-width: 600px; width: 90%; margin: 0 auto;">
+    <h1 class="main-title">🔊 VOICE_RECORDER</h1>
+    <h1>🎤 Record Your Voice</h1>
+    <div class="controls">
+      <button id="startBtn">⏺ Start Recording</button>
+      <button id="pauseBtn" disabled>⏸ Pause</button>
+      <button id="stopBtn" disabled>⏹ Stop Recording</button>
+    </div>
+
+    <div class="wave-container">
+      <div class="wave-bar" style="--i:1"></div>
+      <div class="wave-bar" style="--i:2"></div>
+      <div class="wave-bar" style="--i:3"></div>
+      <div class="wave-bar" style="--i:4"></div>
+      <div class="wave-bar" style="--i:5"></div>
+    </div>
+
+    <p id="status">Click "Start" to begin.</p>
+    <audio id="player" controls style="display:none;"></audio>
+
+    <div id="recordingsList">
+      <h2>📁 Saved Recordings</h2>
+      <ul id="recordings"></ul>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='Voice_Recorder_web.js') }}"></script>
+</body>
+</html>
