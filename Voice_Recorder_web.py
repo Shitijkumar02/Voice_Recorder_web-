@@ -8,7 +8,7 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 @app.route('/')
 def index():
-    return render_template('Voice_Recorder_web.html')
+    return render_template('index.html')
 
 @app.route('/upload', methods=['POST'])
 def upload():
