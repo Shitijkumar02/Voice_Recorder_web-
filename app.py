@@ -16,7 +16,7 @@ def upload():
     filename = f"recording_{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.wav"
     filepath = os.path.join(UPLOAD_FOLDER, filename)
     audio.save(filepath)
-    return {'filename': filename}
+   return jsonify({'filename': filename})
 
 @app.route('/recordings/<filename>')
 def serve_recording(filename):
